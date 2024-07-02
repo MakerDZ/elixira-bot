@@ -1,0 +1,22 @@
+{
+  "name": "elixira",
+  "version": "1.0.0",
+  "description": "",
+  "main": "",
+  "scripts": {
+    "commit": "cz-customizable"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+		"cz-conventional-changelog": "^3.3.0",
+		"cz-customizable": "^7.0.0"
+	},
+	"config": {
+		"commitizen": {
+			"path": "./node_modules/cz-customizable/"
+		}
+	},
+	"commit": "./node_modules/cz-customizable/standalone.js"
+}

@@ -26,3 +26,4 @@ elixira-*.tar
 /tmp/
 
 .env
+node_modules
