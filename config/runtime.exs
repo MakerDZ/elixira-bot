@@ -7,5 +7,6 @@ config :nostrum,
   gateway_intents: [
     :guilds,
     :guild_messages,
+    :guild_members,
     :message_content
   ]

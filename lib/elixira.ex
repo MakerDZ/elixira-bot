@@ -1,23 +1,9 @@
-defmodule ExampleConsumer do
-  use Nostrum.Consumer
-
-  alias Nostrum.Api
-
-  def handle_event({:MESSAGE_CREATE, msg, _ws_state}) do
-    case msg.content do
-      "ping!" ->
-        Api.create_message(msg.channel_id, "pong!!")
-      _ ->
-        :ignore
-    end
-  end
-end
-
 defmodule Elixira do
   use Application
+  alias Elixira.Consumer
 
   def start(_type, _args) do
-    children = [ExampleConsumer]
+    children = [Consumer]
     Supervisor.start_link(children, strategy: :one_for_one)
   end
 
