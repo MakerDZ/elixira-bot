@@ -1,4 +1,4 @@
-defmodule Elixira.Events.GuildMemberHandler do
+defmodule Bot.Events.GuildMemberHandler do
   alias Nostrum.Api
 
   def handle({:GUILD_MEMBER_ADD, {_guild_id, member}, _ws_state}) do

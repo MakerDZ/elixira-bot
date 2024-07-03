@@ -1,6 +1,6 @@
 defmodule Elixira do
   use Application
-  alias Elixira.Consumer
+  alias Bot.Consumer
 
   def start(_type, _args) do
     children = [Consumer]

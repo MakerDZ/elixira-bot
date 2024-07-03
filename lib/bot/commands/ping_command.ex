@@ -1,4 +1,4 @@
-defmodule Elixira.Commands.PingCommand do
+defmodule Bot.Commands.PingCommand do
   alias Nostrum.Api
 
   def handle(msg) do

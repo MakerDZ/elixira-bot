@@ -1,22 +1,21 @@
-defmodule MessageCreateConsumer do
-  use Nostrum.Consumer
+defmodule Bot.Events.MessageCreateHandler do
+  alias Bot.Commands.PingCommand
 
-  alias Nostrum.Api
-
-  def handle_event({:GUILD_MEMBER_ADD, {_guild_id, member}, _ws_state}) do
-    # This event is triggered when a new member joins the guild
-    welcome_channel_id = 123456789  # Replace with your welcome channel ID
-    username = member.user.username
-
-    welcome_message = "Welcome to the server, #{username}!"
-    Api.create_message(welcome_channel_id, welcome_message)
+  def handle({:MESSAGE_CREATE, msg, _ws_state}) do
+    if String.starts_with?(msg.content, "!") do
+      command = String.trim_leading(msg.content, "!")
+      handle_command(command, msg)
+    else
+      IO.puts("Normal message.")
+      :ignore
+    end
   end
 
-  def handle_event({:MESSAGE_CREATE, msg, _ws_state}) do
-    case msg.content do
-      "ping!" ->
-        Api.create_message(msg.channel_id, "pong!!")
+  defp handle_command(command, msg) do
+    case String.downcase(command) do
+      "ping" -> PingCommand.handle(msg)
       _ ->
+        IO.puts("Unknown command: #{command}")
         :ignore
     end
   end
